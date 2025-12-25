@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Токарная обработка с ЧПУ | Fanuc</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="video-background-container">
+        <video autoplay muted loop playsinline id="bg-video">
+            <source src="images/background-video.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+
+    <div id="snow-container"></div>
+
+    <div class="container">
+        <header>
+            <h1>Токарная обработка ЧПУ</h1>
+            <p>
+                Искусство точности. Технологии Fanuc. Ваш путь от идеи до готовой детали.
+                <br>
+                <span class="subtitle-text">
+                    Профессиональное обучение программированию и операторской работе на станках с ЧПУ.
+                </span>
+            </p>
+            
+            <div class="button-group">
+                <a href="https://t.me/+Jj6Uy-wDMfk1NGIy" class="btn btn-telegram" target="_blank">
+                    <img src="images/telegram-icon.svg" alt="TG" class="icon" onerror="this.style.display='none'"> 
+                    <span>Telegram</span>
+                </a>
+                <a href="https://vk.com/club228382060?from=groups" class="btn btn-vk" target="_blank">
+                    <img src="images/vk-icon.svg" alt="VK" class="icon" onerror="this.style.display='none'">
+                    <span>ВКонтакте</span>
+                </a>
+                <a href="https://www.youtube.com/@Vladimir.rabota.vahta-cnc" class="btn btn-youtube" target="_blank">
+                    <img src="images/youtube-icon.svg" alt="YT" class="icon" onerror="this.style.display='none'">
+                    <span>YouTube</span>
+                </a>
+            </div>
+        </header>
+
+        <section class="feedback-section">
+            <div class="feedback-glass">
+                <h2>🎄 Новогодний опрос</h2>
+                <p>Что бы вы хотели видеть в новом приложении для ЧПУ? Какие функции вам нужны?</p>
+                <div class="feedback-form">
+                    <textarea id="user-feedback" placeholder="Напишите ваше пожелание здесь..."></textarea>
+                    <button class="btn-send" onclick="sendToTelegram()">
+                        Отправить
+                    </button>
+                </div>
+                <p id="feedback-status" style="display:none; margin-top:10px; color: #4dff4d; font-weight:bold;">Сообщение отправлено! Спасибо.</p>
+            </div>
+        </section>
+
+        <section class="gallery-section">
+            <h2 class="section-title">Примеры работ</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="images/milling.jpg" alt="Milling" class="gallery-img">
+                    <div class="gallery-text">
+                        <h3>Milling</h3>
+                        <p>Сложная 5-осевая фрезеровка</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/turning.jpg" alt="Turning" class="gallery-img">
+                    <div class="gallery-text">
+                        <h3>Turning</h3>
+                        <p>Высокоточная токарная обработка</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/materials.jpg" alt="Turn-Mill" class="gallery-img">
+                    <div class="gallery-text">
+                        <h3>Turn-Mill</h3>
+                        <p>Токарно-фрезерная обработка</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <main>
+            <div class="fanuc-controller">
+                <div class="controller-header">
+                    <span class="brand-logo">FANUC</span>
+                    <span class="model-name">Series 0i-TF <span class="plus">Plus</span></span>
+                </div>
+
+                <div class="screen-section">
+                    <div class="monitor-bezel">
+                        <div class="screen-content dark-theme">
+                            <div id="screen-text-area" class="screen-left"></div>
+                            <div id="g-code-display" class="screen-right"></div>
+                        </div>
+                        <div class="soft-keys-row">
+                            <div class="soft-key"></div><div class="soft-key"></div><div class="soft-key"></div>
+                            <div class="soft-key"></div><div class="soft-key"></div>
+                        </div>
+                    </div>
+                    <div class="vertical-soft-keys">
+                        <div class="v-key"></div><div class="v-key"></div><div class="v-key"></div>
+                        <div class="v-key"></div><div class="v-key"></div>
+                    </div>
+                </div>
+
+                <div class="keyboard-section">
+                    <div class="qwerty-grid">
+                        <div class="key">~</div><div class="key">Q</div><div class="key">W</div><div class="key">E</div><div class="key">R</div><div class="key">T</div><div class="key">Y</div><div class="key">U</div><div class="key">I</div><div class="key">O</div><div class="key">P</div>
+                        <div class="key">A</div><div class="key">S</div><div class="key">D</div><div class="key">F</div><div class="key">G</div><div class="key">H</div><div class="key">J</div><div class="key">K</div><div class="key">L</div>
+                        <div class="key shim">SHIFT</div><div class="key">Z</div><div class="key">X</div><div class="key">C</div><div class="key">V</div><div class="key">B</div><div class="key">N</div><div class="key">M</div><div class="key shim">INPUT</div>
+                    </div>
+                    <div class="op-panel-grid">
+                        <div class="op-group">
+                            <div class="key blue">RESET</div>
+                            <div class="key green">START</div>
+                            <div class="key red">STOP</div>
+                        </div>
+                        <div class="knobs-row">
+                            <div class="knob-box"><div class="knob"></div><span>FEED</span></div>
+                            <div class="knob-box"><div class="knob"></div><span>SPINDLE</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

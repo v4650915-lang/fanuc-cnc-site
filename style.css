@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+:root {
+    --fanuc-yellow: #f3c300;
+    --text-primary: #ffffff;
+    --fanuc-dark-bg: #2b2b2b;
+    --fanuc-key-bg: #3a3a3e;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #000;
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; overflow-x: hidden;
+}
+
+/* ФОН И СНЕГ */
+.video-background-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; }
+#bg-video { width: 100%; height: 100%; object-fit: cover; }
+.video-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); }
+
+#snow-container {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: -1;
+}
+.snowflake {
+    position: absolute; top: -10px; color: #fff; font-size: 1em; opacity: 0.8;
+    user-select: none; animation: fall linear infinite;
+}
+@keyframes fall {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(110vh); }
+}
+
+/* КОНТЕЙНЕР */
+.container {
+    width: 100%; max-width: 1200px; padding-top: 15vh; padding-bottom: 4rem;
+    display: flex; flex-direction: column; gap: 4rem; z-index: 2; padding-left: 1rem; padding-right: 1rem;
+}
+
+/* --- ХЕДЕР: ЛЕДЯНОЙ ЭФФЕКТ --- */
+header { text-align: center; margin-bottom: 3rem; }
+
+header h1 {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 4rem;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    letter-spacing: 2px;
+    font-weight: 900;
+
+    /* ЛЕДЯНОЙ ГРАДИЕНТ */
+    background: linear-gradient(
+        to bottom,
+        #ffffff 0%,    /* Снежный белый */
+        #e0f7fa 40%,   /* Светлый лед */
+        #80deea 50%,   /* Голубая грань */
+        #00acc1 51%,   /* Темный лед */
+        #006064 100%   /* Глубина */
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    /* ОБЪЕМНАЯ ЛЕДЯНАЯ ТЕНЬ */
+    text-shadow: 
+        0 -1px 2px rgba(255,255,255,0.9), /* Блик сверху */
+        0 2px 0 #00838f,  /* Толщина буквы (темно-бирюзовый) */
+        0 4px 0 #006064,
+        0 6px 0 #004d40,
+        0 10px 20px rgba(0, 255, 255, 0.4); /* Холодное свечение вокруг */
+        
+    -webkit-text-stroke: 1px rgba(255,255,255,0.2);
+}
+
+/* --- ОПТИМИЗИРОВАННЫЙ ТЕКСТ ПОД ЗАГОЛОВКОМ --- */
+header p { 
+    background: rgba(0,0,0,0.8); /* Чуть темнее фон для контраста */
+    padding: 15px 25px; /* Уменьшил отступы */
+    border-radius: 15px; 
+    display: inline-block; 
+    line-height: 1.5; 
+    font-size: 1rem; /* Уменьшил шрифт (было 1.1) */
+    max-width: 650px; /* Сузил блок (было 800) */
+    border: 1px solid rgba(255,255,255,0.1);
+}
+.subtitle-text { display: block; margin-top: 8px; font-weight: 500; color: #ccc; font-size: 0.95rem; }
+
+.button-group { display: flex; gap: 1rem; justify-content: center; margin-top: 3rem; flex-wrap: wrap; }
+.btn {
+    display: flex; align-items: center; padding: 12px 30px; border-radius: 50px;
+    text-decoration: none; color: white; border: 1px solid rgba(255,255,255,0.2);
+    backdrop-filter: blur(5px); transition: 0.2s; font-weight: bold;
+}
+.btn:hover { transform: translateY(-3px); }
+.btn-telegram:hover { background: #2AABEE; border-color: #2AABEE; }
+.btn-vk:hover { background: #0077FF; border-color: #0077FF; }
+.btn-youtube:hover { background: #FF0000; border-color: #FF0000; }
+.btn .icon { width: 20px; height: 20px; margin-right: 10px; filter: invert(1); }
+
+/* --- ФОРМА ОПРОСА: "ЕЛОВАЯ ВЕТКА" --- */
+.feedback-section {
+    display: flex; justify-content: center; width: 100%;
+    margin-bottom: 2rem;
+}
+.feedback-glass {
+    background: rgba(20, 20, 30, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 2.5rem;
+    width: 100%; max-width: 700px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    position: relative; 
+    overflow: visible;
+    margin-top: 20px; /* Место для ветки сверху */
+}
+
+/* "ЕЛОВАЯ ВЕТКА" СВЕРХУ */
+.feedback-glass::before {
+    content: '';
+    position: absolute;
+    top: -15px; /* Торчит сверху */
+    left: 0;
+    width: 100%;
+    height: 20px;
+    border-radius: 10px 10px 0 0;
+    
+    /* Текстура елки (зеленые полоски) */
+    background: repeating-linear-gradient(
+        45deg,
+        #0b3d0b,
+        #0b3d0b 10px,
+        #145214 10px,
+        #145214 20px
+    );
+    
+    /* "Снег" сверху ветки */
+    border-top: 4px solid #fff;
+    box-shadow: 0 0 10px rgba(255,255,255,0.3); /* Легкое свечение снега */
+    z-index: 2;
+}
+
+/* Золотая полоска под веткой (как украшение) */
+.feedback-glass::after {
+    content: ''; position: absolute; top: 5px; left: 0; width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--fanuc-yellow), transparent);
+    z-index: 1;
+    opacity: 0.7;
+}
+
+.feedback-glass h2 {
+    font-family: 'Roboto Mono'; color: #fff; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px;
+}
+.feedback-glass p { margin-bottom: 1.5rem; color: #ccc; font-size: 1rem; }
+
+.feedback-form { display: flex; flex-direction: column; gap: 1rem; }
+textarea {
+    width: 100%; height: 120px; padding: 15px; border-radius: 8px;
+    background: rgba(0,0,0,0.6); border: 1px solid #555; color: white;
+    font-family: 'Roboto', sans-serif; font-size: 1rem; resize: none;
+}
+textarea:focus { outline: none; border-color: var(--fanuc-yellow); }
+.btn-send {
+    align-self: flex-end; padding: 12px 35px; border-radius: 50px; border: none;
+    background: var(--fanuc-yellow); color: #000; font-weight: bold; cursor: pointer;
+    font-family: 'Roboto Mono'; text-transform: uppercase; transition: 0.3s;
+}
+.btn-send:hover { background: #fff; box-shadow: 0 0 20px rgba(243, 195, 0, 0.5); }
+
+/* ГАЛЕРЕЯ */
+.gallery-section { text-align: center; }
+.section-title { color: var(--fanuc-yellow); font-family: 'Roboto Mono'; margin-bottom: 2rem; font-size: 2rem; }
+.gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+.gallery-item { background: rgba(20,20,20,0.9); border-radius: 10px; overflow: hidden; border: 1px solid #444; }
+.gallery-img { width: 100%; height: 220px; object-fit: cover; }
+.gallery-text { padding: 1rem; text-align: left; }
+.gallery-text h3 { color: #fff; margin-bottom: 0.5rem; }
+.gallery-text p { color: #ccc; font-size: 0.9rem; }
+
+/* СТОЙКА FANUC */
+.fanuc-controller {
+    background: var(--fanuc-dark-bg); border: 2px solid #444; border-radius: 4px;
+    box-shadow: 0 25px 50px rgba(0,0,0,1);
+    font-family: 'Roboto', sans-serif;
+    max-width: 800px; margin: 0 auto;
+}
+.controller-header {
+    background: var(--fanuc-yellow); padding: 5px 15px;
+    display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #000;
+}
+.brand-logo { color: #d00; font-weight: 900; font-size: 1.1rem; }
+.model-name { color: #000; font-weight: 700; font-family: 'Roboto Mono'; font-size: 0.9rem;}
+.screen-section { padding: 15px; background: #222; display: flex; gap: 10px; border-bottom: 1px solid #444;}
+.monitor-bezel { flex-grow: 1; background: #111; padding: 8px; border: 1px solid #333; box-shadow: inset 0 0 15px #000; }
+.screen-content.dark-theme {
+    background-color: #000; height: 320px; display: flex;
+    border: 1px solid #333; font-family: 'Roboto Mono', monospace; padding: 10px; color: #e0e0e0;
+}
+.screen-left { width: 55%; border-right: 1px solid #333; padding-right: 10px; }
+.screen-right { width: 45%; padding-left: 10px; color: #2bdd2b; overflow: hidden; }
+.g-code-line { padding: 2px 0; border-bottom: 1px solid #111; }
+.soft-keys-row { display: flex; gap: 4px; margin-top: 8px; }
+.soft-key { flex: 1; height: 22px; background: var(--fanuc-key-bg); border-radius: 2px; box-shadow: 0 2px 0 #111; }
+.vertical-soft-keys { display: flex; flex-direction: column; gap: 4px; justify-content: center; }
+.v-key { width: 28px; height: 38px; background: var(--fanuc-key-bg); border-radius: 2px; box-shadow: 2px 2px 0 #111; }
+.keyboard-section { padding: 15px; background: var(--fanuc-dark-bg); display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+.qwerty-grid { display: grid; grid-template-columns: repeat(11, 1fr); gap: 4px; }
+.key {
+    background: var(--fanuc-key-bg); color: #fff; height: 32px; display: flex; align-items: center; justify-content: center;
+    border-radius: 3px; border-bottom: 3px solid #1a1a1a; cursor: pointer; font-size: 0.7rem; font-weight: 700; transition: 0.1s;
+}
+.key:active { transform: translateY(2px); border-bottom-width: 1px; }
+.key.shim { grid-column: span 2; background: #4a4a4e; }
+.key.green { background: #008000; border-bottom-color: #004d00; } 
+.key.red { background: #b30000; border-bottom-color: #660000; } 
+.key.blue { background: #0059b3; border-bottom-color: #003366; }
+.op-panel-grid { display: flex; flex-direction: column; gap: 10px; background: #222; padding: 10px; border: 1px solid #000; border-radius: 4px;}
+.op-group { display: flex; gap: 5px; } .op-group .key { flex: 1; height: 40px; }
+.knobs-row { display: flex; justify-content: space-around; margin-top: 5px;}
+.knob-box { display: flex; flex-direction: column; align-items: center; gap: 5px; font-size: 0.7rem; color: #aaa; }
+.knob { width: 32px; height: 32px; border-radius: 50%; background: conic-gradient(#444 0% 10%, #222 10% 100%); border: 2px solid #111; box-shadow: 0 2px 4px rgba(0,0,0,0.5); }
