@@ -119,7 +119,7 @@ export const ContactForm = () => {
         {/* Новогодняя рамка - изображение как фон с усиленными эффектами */}
         <div className="relative rounded-3xl overflow-hidden shadow-2xl"
           style={{
-            backgroundImage: `url('/images/newyear-frame.jpg')`,
+            backgroundImage: url('/fanuc-cnc-site/images/newyear-frame.jpg'),
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
