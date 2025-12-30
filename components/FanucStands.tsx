@@ -12,7 +12,7 @@ interface FanucStand {
 }
 
 export const FanucStands = () => {
-  const stands: FanucStand[] = [
+const stands: FanucStand[] = [
     {
       model: 'FANUC System 6',
       year: '1976',
@@ -24,7 +24,7 @@ export const FanucStands = () => {
         'Высокая надежность'
       ],
       icon: '⚙️',
-      image: '/images/stands/fanuc-modern.webp',
+      image: '/fanuc-cnc-site/images/stands/fanuc-modern.webp', // ИСПРАВЛЕНО
     },
     {
       model: 'FANUC 0i-TD',
@@ -37,7 +37,7 @@ export const FanucStands = () => {
         'Высокая надежность'
       ],
       icon: '🔧',
-      image: '/images/stands/fanuc-mid.webp',
+      image: '/fanuc-cnc-site/images/stands/fanuc-mid.webp', // ИСПРАВЛЕНО
     },
     {
       model: 'FANUC 0i-TF Plus',
@@ -50,7 +50,7 @@ export const FanucStands = () => {
         'Энергоэффективность'
       ],
       icon: '🚀',
-      image: '/images/stands/fanuc-2010s.png',
+      image: '/fanuc-cnc-site/images/stands/fanuc-2010s.png', // ИСПРАВЛЕНО
     },
     {
       model: 'FANUC 30i-B',
@@ -63,7 +63,7 @@ export const FanucStands = () => {
         'Максимальная точность'
       ],
       icon: '🤖',
-      image: '/images/stands/fanuc-old.webp',
+      image: '/fanuc-cnc-site/images/stands/fanuc-old.webp', // ИСПРАВЛЕНО
     },
   ];
 
