@@ -28,7 +28,7 @@ export const ParallaxMachine = () => {
           {/* Фоновое изображение - вал с червячной передачей */}
           <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
             <img
-              src="/fanuc-cnc-site/images
+              src="/fanuc-cnc-site/images/background/worm-gear-shaft.jpg"
               alt="Вал с червячной передачей - токарная обработка"
               className="w-full h-full object-cover opacity-12"
               style={{

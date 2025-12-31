@@ -59,7 +59,12 @@ export const ContactForm = () => {
       }
 
       // Отправляем данные на API
-      const response = await fetch('/api/send-message', {
+      // ВАЖНО: API routes не работают на GitHub Pages (статический экспорт)
+      // Для работы формы нужно использовать внешний сервис (Vercel, Netlify Functions и т.д.)
+      const apiPath = process.env.NODE_ENV === 'production' 
+        ? '/fanuc-cnc-site/api/send-message' 
+        : '/api/send-message';
+      const response = await fetch(apiPath, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -119,7 +124,7 @@ export const ContactForm = () => {
         {/* Новогодняя рамка - изображение как фон с усиленными эффектами */}
         <div className="relative rounded-3xl overflow-hidden shadow-2xl"
           style={{
-            backgroundImage: url('/fanuc-cnc-site/images/newyear-frame.jpg'),
+            backgroundImage: `url('/fanuc-cnc-site/images/newyear-frame.jpg')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',

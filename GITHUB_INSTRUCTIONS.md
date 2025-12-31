@@ -42,8 +42,16 @@ git push -u origin main
 
 ## Важные замечания
 
+⚠️ **API Routes на GitHub Pages:**
+- **API Routes НЕ РАБОТАЮТ на GitHub Pages**, так как это статический хостинг
+- Форма обратной связи не будет работать на GitHub Pages
+- Для работы формы используйте:
+  - **Vercel** (рекомендуется) - автоматически поддерживает API Routes
+  - **Netlify** - с настройкой Netlify Functions
+  - Внешние сервисы (Formspree, EmailJS и т.д.)
+
 ⚠️ **Безопасность:**
-- Файл `pages/api/send-message.ts` содержит API токен Telegram бота
+- Файл `config/socialLinks.ts` содержит API токен Telegram бота
 - Рекомендуется использовать переменные окружения для токенов
 - Не публикуйте токены в открытом репозитории
 

@@ -26,14 +26,32 @@ npm run dev
 
 ## Конфигурация
 
-### Telegram Bot
+### ⚠️ Важно: API Routes на GitHub Pages
+
+**API Routes не работают на GitHub Pages**, так как это статический хостинг. 
+
+Для работы формы обратной связи есть несколько вариантов:
+
+#### Вариант 1: Использовать Vercel (рекомендуется)
+1. Загрузите проект на [Vercel](https://vercel.com)
+2. Vercel автоматически поддерживает API Routes
+3. Настройте переменные окружения для токена бота
+
+#### Вариант 2: Использовать Netlify Functions
+1. Загрузите проект на [Netlify](https://netlify.com)
+2. Настройте Netlify Functions для API routes
+
+#### Вариант 3: Внешний сервис
+Используйте внешний сервис для обработки запросов формы (например, Formspree, EmailJS)
+
+### Telegram Bot (для локальной разработки или Vercel/Netlify)
 
 Для работы формы обратной связи необходимо настроить Telegram бота:
 
 1. Создайте бота через [@BotFather](https://t.me/BotFather)
 2. Получите API токен
 3. Узнайте Chat ID (можно использовать бота [@userinfobot](https://t.me/userinfobot))
-4. Обновите файл `pages/api/send-message.ts` с вашими данными
+4. Обновите файл `config/socialLinks.ts` с вашими данными
 
 ### Социальные сети
 

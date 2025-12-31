@@ -5,7 +5,7 @@ export const BackgroundImage = () => {
     <div 
       className="fixed inset-0 z-0"
       style={{
-        backgroundImage: `url('/images/background/cnc-machining.jpg')`,
+        backgroundImage: `url('/fanuc-cnc-site/images/background/cnc-machining.jpg')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
