@@ -5,12 +5,12 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // Добавляем эти две настройки ниже:
+  // Эти настройки заставят GitHub собрать сайт, несмотря на красные подчеркивания
   eslint: {
-    ignoreDuringBuilds: true, // Игнорировать ошибки оформления
+    ignoreDuringBuilds: true,
   },
   typescript: {
-    ignoreBuildErrors: true, // Игнорировать ошибки типов
+    ignoreBuildErrors: true,
   },
 };
 
